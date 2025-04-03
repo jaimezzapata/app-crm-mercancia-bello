@@ -1,16 +1,27 @@
 import './Login.css'
 import { useState } from 'react'
+import { alertaConfirmacion, alertaError, alertaRedireccion } from '../helpers/funciones'
 import { usuarios } from '../services/database'
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
   const [getName, setName] = useState("")
   const [getPassword, setPassword] = useState("")
+  let redireccion = useNavigate()
+
+  function buscarUsuario() {
+    let auth = usuarios.find((item) => item.usuario === getName && item.contrasena == getPassword)
+    localStorage.setItem("usuario", auth.nombre)
+    console.log(auth);
+    return auth
+  }
 
   function iniciarSesion() {
-    if (getName === "admin" && getPassword === "admin") {
-      alert("Bienvenido")
+    if (buscarUsuario()) {
+      alertaRedireccion(redireccion, "/home", "Bienvenido a la aplicacion")
     } else {
-      alert("Usuario o contraseña incorrectos")
+      alertaError("Error de credenciales")
     }
   }
 

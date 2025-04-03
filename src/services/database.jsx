@@ -7,6 +7,6 @@ export let usuarios = [
   {
     usuario: "generico",
     contrasena: "12345",
-    nombre: "Usuario"
+    nombre: "Camila Suarez"
   },
 ]
