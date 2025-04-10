@@ -1,6 +1,6 @@
 import './Login.css'
 import { useState } from 'react'
-import { alertaConfirmacion, alertaError, alertaRedireccion } from '../helpers/funciones'
+import { alertaError, alertaRedireccion, generarToken } from '../helpers/funciones'
 import { usuarios } from '../services/database'
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,7 @@ function Login() {
 
   function iniciarSesion() {
     if (buscarUsuario()) {
+      localStorage.setItem("token", generarToken())
       alertaRedireccion(redireccion, "/home", "Bienvenido a la aplicacion")
     } else {
       alertaError("Error de credenciales")

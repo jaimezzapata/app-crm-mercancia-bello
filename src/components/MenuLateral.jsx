@@ -6,6 +6,7 @@ const MenuLateral = () => {
   let redireccion = useNavigate()
   function cerrarSesion() {
     localStorage.removeItem("usuario")
+    localStorage.removeItem("token")
     alertaRedireccion(redireccion, '/', "Cerrando sesión")
   }
   return (

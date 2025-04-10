@@ -33,3 +33,7 @@ export function alertaRedireccion(redireccion, path, mensaje) {
         }
     })
 }
+
+export function generarToken() {
+    return Math.random().toString(36).substring(2, 10) + "-" + Math.random().toString(36).substring(2, 10)
+}
