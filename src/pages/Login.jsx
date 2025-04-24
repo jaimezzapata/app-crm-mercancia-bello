@@ -1,14 +1,18 @@
 import './Login.css'
 import { useState } from 'react'
 import { alertaError, alertaRedireccion, generarToken } from '../helpers/funciones'
-import { usuarios } from '../services/database'
 import { useNavigate } from "react-router-dom";
-
+let urlUsuarios = "https://back-json-server-jueves.onrender.com/usuarios"
 
 function Login() {
   const [getName, setName] = useState("")
   const [getPassword, setPassword] = useState("")
+  const [usuarios, setUsuarios] = useState([])
   let redireccion = useNavigate()
+
+  function getUsuarios(){
+    fetch(urlUsuarios)
+  }
 
   function buscarUsuario() {
     let auth = usuarios.find((item) => item.usuario === getName && item.contrasena == getPassword)
@@ -25,6 +29,7 @@ function Login() {
       alertaError("Error de credenciales")
     }
   }
+
 
   return (
     <form /* onSubmit={iniciarSesion} */ className="form">
