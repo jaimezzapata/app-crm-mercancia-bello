@@ -24,14 +24,15 @@ function Login() {
   useEffect(() => {
     getUsuarios();
   }, []);
-  
-  console.log(usuarios);    
+
+  console.log(usuarios);
 
   function buscarUsuario() {
     let auth = usuarios.find(
       (item) => item.usuario === getName && item.contrasena == getPassword
     );
-    localStorage.setItem("usuario", auth.nombre);
+    console.log(auth);
+    localStorage.setItem("usuario", JSON.stringify(auth));
     console.log(auth);
     return auth;
   }
