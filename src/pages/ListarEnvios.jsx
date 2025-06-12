@@ -47,7 +47,7 @@ const ListarEnvios = () => {
               >
                 Eliminar
               </button>
-              <Link className="card__button">Editar</Link>
+              <Link to={"/home/editar/"+item.id} className="card__button">Editar</Link>
             </div>
           </div>
         ))
